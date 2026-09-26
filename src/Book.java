@@ -1,9 +1,9 @@
 class Book extends LibraryItem{
     Author author;
 
-    public Book(String ItemId,String Title,Author author)
+    public Book(String ItemId,String Title,Author author,int noOfCopies)
     {
-        super(ItemId,Title);
+        super(ItemId,Title,noOfCopies);
         this.author=author;
 
 
@@ -14,7 +14,7 @@ class Book extends LibraryItem{
     {
         System.out.println("ItemId: "+ItemId);
         System.out.println("Title: "+Title);
-        System.out.println("IsAvaialable: "+IsAvailable);
+//        System.out.println("IsAvaialable: "+IsAvailable);
         System.out.println("author: "+author.getName());
     }
 

@@ -1,9 +1,9 @@
 class Magazine extends LibraryItem{
     int IssueNO;
 
-    public Magazine(String ItemId,String Title,int IssueNo)
+    public Magazine(String ItemId,String Title,int IssueNo,int noOfCopies)
     {
-        super(ItemId,Title);
+        super(ItemId,Title,noOfCopies);
         this.IssueNO=IssueNo;
 
 
@@ -14,7 +14,7 @@ class Magazine extends LibraryItem{
     {
         System.out.println("ItemId: "+ItemId);
         System.out.println("Title: "+Title);
-        System.out.println("IsAvaialable: "+IsAvailable);
+//        System.out.println("IsAvaialable: "+IsAvailable);
         System.out.println("Issue Number: "+IssueNO);
     }
     public String toString()

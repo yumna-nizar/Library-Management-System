@@ -2,51 +2,57 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Library implements ItemOperations {
-    private int bookCount;
-    private Book[] books=new Book[10];
-    private int magazineCount;
-    private Magazine[] magazines=new Magazine[10];
+
+    private ArrayList<Book> books=new ArrayList<>();
+    private ArrayList<Magazine> magazines=new ArrayList<>();
 
     Library()
     {
-        this.bookCount=0;
-        this.magazineCount=0;
+//        this.bookCount=0;
+//        this.magazineCount=0;
     }
 
     @Override
     public void addItem(LibraryItem newItem) {
+        /*adding item to the library
+        if the item is book then add it to book arrayList of library
+        if the item is magzine then add it to magazine arrayList of library*/
         if(newItem instanceof Book)
         {
-            if(bookCount<books.length)
-        {
-            books[bookCount]=(Book) newItem;
-            bookCount++;
-            System.out.println(newItem+" book has been added to library.");
-            //since toString method is overridden in the Book class newBook is giving here the book name only not the refernce address inside the newBook.
+           books.add((Book)newItem); //downcasting the given item to book and storing it in books arraylist
         }
         else {
-            System.out.println("Library is full..no more books can be added");
-        }
-        }
-        else if(newItem instanceof Magazine)
-        {
-            if(magazineCount<magazines.length)
-        {
-            magazines[magazineCount]=(Magazine) newItem;
-            magazineCount++;
-            System.out.println(newItem+" has been added to library");
-        }
-        else {
-            System.out.println("library is full..no more magazines can be added to library");
+            magazines.add((Magazine) newItem); //downcasting the given item to magazine and storing it in magazine arraylist
         }
 
-        }
 
 
     }
 
     @Override
     public void removeItem(String ItemId) {
+        /*removes the item.iterating through the book
+        arraylist to find if the given ItemId matches the ItemId of any Book*/
+        for(Book b:books)
+        {
+            if(b.ItemId.equalsIgnoreCase(ItemId))
+            {
+                books.remove(b);
+                return;
+            }
+
+        }
+        /*iterating through the magazine arraylist to find if the
+        given ItemId matches the ItemId of any magazine*/
+        for (Magazine m:magazines)
+        {
+            if(m.ItemId.equalsIgnoreCase(ItemId))
+            {
+                magazines.remove(m);
+                return;
+            }
+
+        }
 
 
     }
@@ -59,17 +65,23 @@ public class Library implements ItemOperations {
         if(option==1)
         {
             System.out.println("list of Books in the library:");
-        for(int i=0;i<bookCount;i++) {
-            System.out.println(books[i].Title);
+            for(Book b:books) {
+                System.out.println(b);
+            }
+//        for(int i=0;i<bookCount;i++) {
+//            System.out.println(books[i].Title);
         }
-        }
+
         else if(option == 2)
         {
             System.out.println("list of magazines in the library is:");
-        for(int i=0;i<magazineCount;i++)
-        {
-            System.out.println(magazines[i].Title);
-        }
+            for(Magazine m:magazines) {
+                System.out.println(m);
+            }
+//        for(int i=0;i<magazineCount;i++)
+//        {
+//            System.out.println(magazines[i].Title);
+//        }
 
         }
 
